@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# computeFunctions and -Routines for parallel calculation
-# of single trial measures needed for the averaged
-# measures like cross spectral densities
+# Cross spectral estimates and densities
 #
 
 # Builtin/3rd party package imports
@@ -31,7 +29,7 @@ def csd(trl_dat,
     Averaging over tapers is done implicitly
     for multi-taper analysis with `taper="dpss"`.
 
-    Output consists of all (``nChannels x nChannels + 1) / 2`` different complex
+    Output consists of all (``nChannels x nChannels + 1) / 2``) different complex
     estimates arranged in a symmetric fashion (``CS_ij == CS_ji*``). The
     elements on the main diagonal (`CS_ii`) are the (real) auto-spectra.
 

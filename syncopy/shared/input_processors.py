@@ -18,26 +18,26 @@ from syncopy.datatype.methods.padding import _nextpow2
 
 
 def process_padding(pad_to_length, lenTrials):
-    
+
     """
     Simplified padding interface, for all taper based methods
     padding has to be done **before** tapering!
 
     Parameters
-    ----------    
+    ----------
     pad_to_length : int, None or 'nextpow2'
-        Either an integer indicating the absolute length of 
+        Either an integer indicating the absolute length of
         the trials after padding or `'nextpow2'` to pad all trials
-        to the nearest power of two. If `None`, no padding is to 
+        to the nearest power of two. If `None`, no padding is to
         be performed
     lenTrials : sequence of int_like
         Sequence holding all individual trial lengths
 
     Returns
-    -------    
+    ------- 
     abs_pad : int
         Absolute length of all trials after padding
-    
+
     """
     # supported padding options
     not_valid = False
@@ -45,8 +45,8 @@ def process_padding(pad_to_length, lenTrials):
         not_valid = True
     elif isinstance(pad_to_length, str) and pad_to_length not in availablePaddingOpt:
         not_valid = True
-        # bool is an int subclass, have to check for it separately...        
-    if isinstance(pad_to_length, bool): 
+        # bool is an int subclass, have to check for it separately...
+    if isinstance(pad_to_length, bool):
         not_valid = True
     if not_valid:
         lgl = "`None`, 'nextpow2' or an integer like number"
@@ -65,14 +65,14 @@ def process_padding(pad_to_length, lenTrials):
     # or pad to optimal FFT lengths
     elif pad_to_length == 'nextpow2':
         abs_pad = _nextpow2(int(lenTrials.max()))
-        
+
     # no padding in case of equal length trials
-    elif pad_to_length is None:        
+    elif pad_to_length is None:
         abs_pad = int(lenTrials.max())
-        if lenTrials.min() != lenTrials.max():            
+        if lenTrials.min() != lenTrials.max():
             msg = f"Unequal trial lengths present, padding all trials to {abs_pad} samples"
             SPYWarning(msg)
-                
+
     # `abs_pad` is now the (soon to be padded) signal length in samples
 
     return abs_pad
@@ -266,7 +266,7 @@ def process_taper(taper,
         if nTaper is None:
             msg = f'Using {Kmax} taper(s) for multi-tapering'
             SPYInfo(msg)
-            dpss_opt = {'NW' : NW, 'Kmax' : Kmax}
+            dpss_opt = {'NW': NW, 'Kmax': Kmax}
             return dpss_opt
 
         elif nTaper is not None:
@@ -285,7 +285,7 @@ def process_taper(taper,
                 '''
                 SPYWarning(msg)
 
-            dpss_opt = {'NW' : NW, 'Kmax' : nTaper}
+            dpss_opt = {'NW': NW, 'Kmax': nTaper}
             return dpss_opt
 
 
@@ -337,4 +337,3 @@ def check_passed_kwargs(lcls, defaults, frontend_name):
         if name not in expected:
             msg = f"option `{name}` has no effect in `{frontend_name}`!"
             SPYWarning(msg, caller=__name__.split('.')[-1])
-
