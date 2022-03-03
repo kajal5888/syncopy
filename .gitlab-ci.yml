@@ -96,7 +96,7 @@ slurmtest:
     - conda env update -f syncopy.yml --prune
     - conda activate syncopy
     - export PYTHONPATH=$CI_PROJECT_DIR
-    - srun -p DEV --mem=8000m -c 4 pytest
+    - srun -p DEV --mem=1000m -c 1 pytest -v test_runner_cs.py
 
 pypitest:
     stage: upload
