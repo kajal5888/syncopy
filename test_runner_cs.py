@@ -14,6 +14,3 @@ def test_os_access():
 
 def test_spyio_parser():
     io_parser(fname, isfile=True)
-def test_spyio_parser_has_to_fail():
-    io_parser('nixda', isfile=True)
-    
