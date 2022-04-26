@@ -20,7 +20,7 @@ from .methods.definetrial import definetrial
 from syncopy.shared.parsers import scalar_parser, array_parser
 from syncopy.shared.errors import SPYValueError, SPYWarning
 from syncopy.shared.tools import best_match
-from syncopy.plotting import sp_plotting
+from syncopy.plotting import sp_plotting, mp_plotting
 
 
 __all__ = ["AnalogData", "SpectralData", "CrossSpectralData"]
@@ -400,6 +400,9 @@ class ContinuousData(BaseData, ABC):
     def singlepanelplot(self):
         raise NotImplementedError
 
+    def multipanelplot(self):
+        raise NotImplementedError
+
 
 class AnalogData(ContinuousData):
     """Multi-channel, uniformly-sampled, analog (real float) data
@@ -480,6 +483,10 @@ class AnalogData(ContinuousData):
     def singlepanelplot(self, shifted=True, **show_kwargs):
 
         sp_plotting.plot_AnalogData(self, shifted, **show_kwargs)
+
+    def multipanelplot(self, **show_kwargs):
+
+        mp_plotting.plot_AnalogData(self, **show_kwargs)
 
 
 class SpectralData(ContinuousData):
@@ -624,6 +631,10 @@ class SpectralData(ContinuousData):
     def singlepanelplot(self, **show_kwargs):
 
         sp_plotting.plot_SpectralData(self, **show_kwargs)
+
+    def multipanelplot(self, **show_kwargs):
+
+        mp_plotting.plot_SpectralData(self, **show_kwargs)
 
 
 class CrossSpectralData(ContinuousData):
