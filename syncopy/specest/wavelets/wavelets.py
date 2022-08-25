@@ -379,4 +379,5 @@ Mexican_hat = Ricker
 class Tallon_Baudry(object):
     def __init__(self):
         """ initialize the parameters for the Tallon_Baudry wavelet"""
+        
         pass
