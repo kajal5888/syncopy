@@ -42,7 +42,7 @@ from .compRoutines import (
 
 availableFooofOutputs = ['fooof', 'fooof_aperiodic', 'fooof_peaks']
 availableOutputs = tuple(spectralConversions.keys())
-availableWavelets = ("Morlet", "Paul", "DOG", "Ricker", "Marr", "Mexican_hat", "Tallon_Baudry")
+availableWavelets = ("Morlet", "Paul", "DOG", "Ricker", "Marr", "Mexican_hat")
 availableMethods = ("mtmfft", "mtmconvol", "wavelet", "superlet")
 
 
